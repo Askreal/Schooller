@@ -24,7 +24,7 @@ export async function POST(req) {
 export async function GET() {
     try {
         await connectMongoDB();
-        const allStudents = await Student.find({});
+        const allStudents = await Student.findOne({});
         return NextResponse.json(allStudents, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: "An error occured while fetching all students." }, { status: 500 });
