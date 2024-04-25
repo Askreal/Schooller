@@ -25,7 +25,7 @@ export async function POST(req) {
 //     "name": "John Doe",
 //         "student_id": 123456,
 //             "number": 789,
-//                 "birthday": "1990-01-01",
+//                 "birthday": "1990-01-01",[]
 //                     "classroom": "A",
 //                         "email": "john@example.com",
 //                             "profile": "Student profile",
