@@ -1,19 +1,22 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "../../../lib/mongodb";
-import Student from "../../../models/students";
+import { StudentSchema } from "../../../models/students";
+import { Dawning_of_a_New_Day } from "next/font/google";
 
 export async function GET() {
     try {
-        // Connect to the MongoDB database using connection pooling
-        await connectMongoDB();
+        const client = await connectMongoDB();
+        const database = client.db('General_data');
+        const collection = database.collection('students');
 
-        // Specify projection to only retrieve necessary fields
-        const allStudents = await Student.find({}, { _id: 0, name: 1, age: 1 });
+        const cursor = await collection.find().toArray();
 
-        // Return response with status 200 and JSON data
-        return Response.json(allStudents, { status: 200 });
-    } catch (error) {
-        // Return error response with status 500 if an error occurs
-        return NextResponse.json({ message: "An error occurred while fetching all students." }, { status: 500 });
+        await client.close();
+
+        return Response.json(cursor);
+    }
+    catch (error) {
+        console.error("Error fetching students : " , error);
+        return Response.error(500 , "Internal Server Error");
     }
 }
