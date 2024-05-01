@@ -4,20 +4,6 @@ import { connectMongoDB } from "../../../lib/mongodb";
 export async function POST(req) {
     const { name, student_id, number, birthday, classroom, email, profile, weight, height, hobbie, fav_subject } = await req.json();
 
-    // return Response.json({
-    //     name: name,
-    //     student_id: student_id,
-    //     number: number,
-    //     birthday: birthday,
-    //     classroom: classroom,
-    //     email: email,
-    //     profile: profile,
-    //     weight: weight,
-    //     height: height,
-    //     hobbie: hobbie,
-    //     fav_subject: fav_subject
-    // })
-
     const client = await connectMongoDB();
     const database = client.db('General_data');
     const collection = database.collection('students');
