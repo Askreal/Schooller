@@ -1,9 +1,6 @@
-const { MongoClient } = require('mongodb');
-import { connectMongoDB } from '../lib/mongodb';
-
 
 // Define the schema
-export default StudentSchema = {
+const StudentSchema = {
     name: {
         type: "string",
         required: true  
@@ -50,17 +47,4 @@ export default StudentSchema = {
     }
 };
 
-// // Function to insert a new student document
-// export async function insertStudent(studentData) {
-//     try {
-        
-//         const db = client.db('student_detail');
-//         const collection = db.collection('students');
-//         const result = await collection.insertOne(studentData);
-
-//         console.log("Inserted student:", result.insertedId);
-//     } catch (error) {
-//         console.error("Error inserting student:", error);
-//     }
-// }
-
+export default StudentSchema
