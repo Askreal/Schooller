@@ -3,7 +3,7 @@ import { connectMongoDB } from '../lib/mongodb';
 
 
 // Define the schema
-export const StudentSchema = {
+export default StudentSchema = {
     name: {
         type: "string",
         required: true  

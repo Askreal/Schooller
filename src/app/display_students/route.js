@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "../../../lib/mongodb";
-import { StudentSchema } from "../../../models/students";
 import { Dawning_of_a_New_Day } from "next/font/google";
 
 export async function GET() {
